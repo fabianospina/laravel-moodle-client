@@ -109,7 +109,7 @@ abstract class BaseAdapter implements ClientAdapterInterface
     {
         //TODO: convert response to array!
 
-        if (array_key_exists('exception', $response)) {
+        if (isset($response['exception'])) {
             throw new ApiException($response['errorcode'] . ': ' . $response['message']);
         }
     }
