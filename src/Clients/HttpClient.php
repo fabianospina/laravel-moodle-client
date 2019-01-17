@@ -51,30 +51,5 @@ class HttpClient
       return json_decode($result, true);
   }
 
-  /**
-   * Send POST request
-   * @param array $arguments
-   * @return array|bool|float|int|\SimpleXMLElement|string
-   */
-  public function post(array $arguments = [])
-  {
-      $arguments = http_build_query($arguments);
-      $context_options = array (
-              'http' => array (
-                  'method' => 'POST',
-                  'header'=> "Content-type: application/x-www-form-urlencoded\r\n"
-                      . "Content-Length: " . strlen($arguments) . "\r\n",
-                  'content' => $arguments
-                  )
-              );
-
-      $context = stream_context_create($context_options);
-      $result = file_get_contents($this->base_url, false, $context);
-    //if ($result === FALSE) { /* Handle error */ }
-
-      // Convert to array
-      return json_decode($result, true);
-  }
-
 
 }
