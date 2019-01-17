@@ -75,6 +75,25 @@ class User extends Service
     }
 
     /**
+     * Update user
+     * @param \F0\LaravelMoodleClient\Entities\Dto\User[] ...$usersItem
+     * @return UserCollection
+     */
+    public function update(UserItem ...$usersItem)
+    {
+        $users = $this->prepareEntityForSending(...$usersItem);
+
+        $response = $this->sendRequest(
+            'core_user_update_users',
+            [
+                'users' => $users
+            ]
+        );
+
+        return $response;
+    }
+
+    /**
      * Delete users by ids
      * @param array $ids
      * @return mixed
