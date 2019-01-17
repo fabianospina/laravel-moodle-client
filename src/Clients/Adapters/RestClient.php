@@ -4,7 +4,7 @@ namespace F0\LaravelMoodleClient\Clients\Adapters;
 
 use F0\LaravelMoodleClient\Clients\BaseAdapter;
 use F0\LaravelMoodleClient\Connection;
-use F0\LaravelMoodleClient\HttpClient;
+use F0\LaravelMoodleClient\Clients\HttpClient;
 
 /**
  * Class RestClient
