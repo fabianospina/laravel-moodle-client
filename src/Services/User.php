@@ -120,4 +120,31 @@ class User extends Service
 
         return new UserCollection(...$userItems);
     }
+
+
+    /**
+     * Enrol as Student
+     * @param $id_user
+     * @param array $courses
+     * @return mixed
+     */
+    public function enrolStudent($id_user, $courses)
+    {
+        $data = array();
+        foreach($courses as $course){
+          $data[] = [
+              'roleid'   => 5,
+              'userid' => $id_user,
+              'courseid' => $course,
+          ];
+        }
+
+        $arguments = [
+            'enrolments' => $data,
+        ];
+        $response = $this->sendRequest('enrol_manual_enrol_users', $arguments);
+
+        return $response;
+    }
+
 }
